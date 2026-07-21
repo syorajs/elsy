@@ -8,6 +8,12 @@ importers:
 
   .:
     devDependencies:
+      '@elsy/builder':
+        specifier: workspace:*
+        version: link:packages/builder
+      '@elsy/preset-netlify':
+        specifier: workspace:*
+        version: link:packages/presets/netlify
       '@types/node':
         specifier: ^26.1.1
         version: 26.1.1
@@ -35,6 +41,12 @@ importers:
         specifier: workspace:*
         version: link:../../contract-tests
 
+  packages/builder:
+    dependencies:
+      '@elsy/preset':
+        specifier: workspace:*
+        version: link:../preset
+
   packages/contract-tests:
     dependencies:
       '@elsy/core':
@@ -43,15 +55,23 @@ importers:
 
   packages/core: {}
 
+  packages/preset: {}
+
   packages/presets/netlify:
     dependencies:
       '@elsy/adapter-netlify':
         specifier: workspace:*
         version: link:../../adapters/netlify
+      '@elsy/preset':
+        specifier: workspace:*
+        version: link:../../preset
       '@elsy/runtime':
         specifier: workspace:*
         version: link:../../runtime
     devDependencies:
+      '@elsy/builder':
+        specifier: workspace:*
+        version: link:../../builder
       '@elsy/contract-tests':
         specifier: workspace:*
         version: link:../../contract-tests
@@ -61,9 +81,16 @@ importers:
       '@elsy/adapter-node':
         specifier: workspace:*
         version: link:../../adapters/node
+      '@elsy/preset':
+        specifier: workspace:*
+        version: link:../../preset
       '@elsy/runtime':
         specifier: workspace:*
         version: link:../../runtime
+    devDependencies:
+      '@elsy/builder':
+        specifier: workspace:*
+        version: link:../../builder
 
   packages/runtime:
     dependencies:

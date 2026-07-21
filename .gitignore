@@ -2,3 +2,6 @@ node_modules/
 dist/
 *.tsbuildinfo
 netlify/functions/
+
+# Local Netlify folder
+.netlify
