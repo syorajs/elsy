@@ -94,3 +94,24 @@ de déploiement, pas une dépendance des packages publiés).
   la suite du monorepo (un test qui inspecterait le fichier bundlé et
   vérifierait l'absence de tout import `@elsy/*` serait la suite logique,
   non implémentée à ce stade).
+
+> **Suivi :** la première implémentation de l'option D générait *et*
+> bundlait directement à la racine du repo (`outDir: repoRoot`), avant de
+> réécrire le fichier en place avec esbuild. Cela échouait au déploiement
+> réel sur Netlify avec `Could not resolve "@elsy/runtime"` /
+> `"@elsy/adapter-netlify"` : ADR 002 (pnpm, résolution stricte) fait que
+> ces deux packages, `dependencies` de `@elsy/preset-netlify`, ne sont
+> exposés par pnpm que dans `packages/presets/netlify/node_modules` —
+> jamais à la racine du monorepo, qui ne les déclare pas. esbuild
+> résolvait donc ces imports en remontant l'arborescence depuis la racine
+> et ne les trouvait pas.
+>
+> Correction : `scripts/generate-netlify-function.mjs` génère et bundle
+> désormais dans un dossier de travail sous
+> `packages/presets/netlify/` (où la résolution pnpm de ces deux
+> dépendances fonctionne), puis copie le fichier bundlé — devenu
+> autonome, sans plus aucun import `@elsy/*` — vers
+> `netlify/functions/server.mjs` à la racine du repo, l'emplacement
+> attendu par `netlify.toml`. Le dossier de travail est supprimé après
+> coup. Aucun changement à la décision elle-même (option D reste
+> retenue) : uniquement à l'endroit où le script l'exécute.

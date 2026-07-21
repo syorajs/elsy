@@ -2,5 +2,4 @@ node_modules/
 dist/
 *.tsbuildinfo
 netlify/functions/
-netlify
-.netlify
+packages/presets/netlify/.netlify-build/
