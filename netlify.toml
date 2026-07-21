@@ -1,0 +1,6 @@
+[build]
+  command = "corepack enable && pnpm install --frozen-lockfile && pnpm -r run build && pnpm run generate:netlify"
+
+[functions]
+  directory = "netlify/functions"
+  node_bundler = "esbuild"

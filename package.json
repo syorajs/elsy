@@ -1,0 +1,17 @@
+{
+  "name": "elsy",
+  "private": true,
+  "version": "0.0.0",
+  "scripts": {
+    "build": "pnpm -r run build",
+    "test": "pnpm -r run test",
+    "typecheck": "pnpm -r run typecheck",
+    "generate:netlify": "node scripts/generate-netlify-function.mjs"
+  },
+  "devDependencies": {
+    "@types/node": "^26.1.1",
+    "typescript": "^5.6.0",
+    "@elsy/builder": "workspace:*",
+    "@elsy/preset-netlify": "workspace:*"
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "name": "@elsy/preset-node",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "test": "node --test dist/preset.test.js"
+  },
+  "dependencies": {
+    "@elsy/preset": "workspace:*",
+    "@elsy/runtime": "workspace:*",
+    "@elsy/adapter-node": "workspace:*"
+  },
+  "devDependencies": {
+    "@elsy/builder": "workspace:*"
+  }
+}
