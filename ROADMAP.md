@@ -93,6 +93,14 @@ l'infrastructure Netlify réelle (`netlify dev` est hors du réseau
 autorisé de cet environnement) — une validation par déploiement réel
 reste à faire hors de ce sandbox.
 
+> **Suivi (Phase 5) :** cette validation par déploiement réel a bien eu
+> lieu, et a révélé un problème que la suite de tests ne pouvait pas
+> détecter : le fichier généré par `@elsy/preset-netlify`, résolu
+> correctement en local via les liens symboliques pnpm, ne l'est plus une
+> fois la function isolée et déployée par Netlify. Voir
+> `docs/decisions/005-netlify-bundling.md` pour le diagnostic complet et
+> la correction (bundling esbuild dans le script de déploiement).
+
 ## Phase 5
 
 - [x] Builder générique.

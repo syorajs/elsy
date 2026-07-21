@@ -63,6 +63,11 @@ curl https://<votre-site>.netlify.app/.netlify/functions/server
 # → Hello World
 ```
 
+`netlify.toml` redirige aussi `/*` vers la function : `https://<votre-site>.netlify.app/`
+répond directement `Hello World` (l'Application actuelle n'a pas encore de
+routeur — voir `packages/runtime/src/runtime.ts` — donc `/` ou toute autre
+URL du site donnent la même réponse pour l'instant).
+
 Ceci referme le point resté ouvert en Phase 4 (`ROADMAP.md`) : jusqu'ici,
 seuls les contract tests contre un émulateur HTTP local avaient validé
 l'adapter Netlify — pas l'infrastructure Netlify réelle.

@@ -12,6 +12,7 @@
     "@types/node": "^26.1.1",
     "typescript": "^5.6.0",
     "@elsy/builder": "workspace:*",
-    "@elsy/preset-netlify": "workspace:*"
+    "@elsy/preset-netlify": "workspace:*",
+    "esbuild": "^0.24.0"
   }
 }

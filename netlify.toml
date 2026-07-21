@@ -4,3 +4,13 @@
 [functions]
   directory = "netlify/functions"
   node_bundler = "esbuild"
+
+# L'Application actuelle (Phase 1, "Hello World") répond à toute requête
+# quel que soit le chemin — pas de routeur pour l'instant (voir
+# packages/runtime/src/runtime.ts). Cette redirection expose donc la
+# function sur "/" en plus de son chemin par défaut
+# "/.netlify/functions/server", pour un test direct dans le navigateur.
+[[redirects]]
+  from = "/*"
+  to = "/.netlify/functions/server"
+  status = 200
